@@ -36,9 +36,11 @@ app.use((error, req, res, next) => {
     return next(error);
   }
   res.status(error.code || 500);
-  res.json({ message: error.message || "An unknown error occurred!" });
+  res.json({
+    message: error.message + "hello" || "An unknown error occurred!",
+  });
 });
 
-// const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3002;
 
-app.listen(3002, console.log(`Server started at 3002`));
+app.listen(PORT, console.log(`Server started at ${PORT}`));
